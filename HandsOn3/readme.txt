@@ -1,1 +1,1 @@
-Este es el tercer Hands On para correr se debe usar el comando batch run.clp 
+Este es el tercer Hands On, se copia y pega el código del txt para correr en CLIPS
