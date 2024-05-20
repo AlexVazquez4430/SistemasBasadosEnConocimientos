@@ -1,0 +1,636 @@
+(clear)
+(defrule empezar
+
+	?comenzar <- (empezar)
+=>
+	(printout t crlf 
+			"------------------------------------------------" 
+			crlf
+	            "    ******** Diagnosticar una enfermedad **********" 
+			crlf 
+			crlf
+			" Responde para obtener un diagnositico" 
+			crlf
+			"------------------------------------------------" 
+			crlf 
+			crlf)
+	
+	(printout t "Presentas Fiebre"
+			crlf
+			"A. Si" crlf
+			"B. No" crlf
+			crlf
+			"Respuesta (Solo la Letra): ")
+
+	(bind ?entrada (read))
+	; bind only works on RHS			
+	(assert (signo-1 ?entrada))        
+
+	(retract ?comenzar)                 
+) 
+
+;********************************
+
+(defrule caso1B
+
+	
+	?signo1 <- (signo-1 B) 
+=>
+	(printout t crlf 
+		    "Presentas Dolor de Cabeza: " crlf
+			"A. Si" crlf
+		    "B. No" crlf
+		    "Respuesta (Solo la Letra): ")
+
+	(bind ?entrada1 (read))  			
+	(bind ?entrada1 (upcase ?entrada1))      
+
+	(if (eq ?entrada1 A)
+	    then
+                (assert (diagnostico InfeccionDeGarganta)) 
+	)
+
+	(if (eq ?entrada1 B)
+	    then
+                (assert (signo-2B B))
+	)
+
+
+	(retract ?signo1) 
+)
+
+
+
+;*****************************************************************
+
+(defrule casoA2B
+
+	
+	?signo1 <- (signo-2B B) 
+=>
+	(printout t crlf 
+		    "Presentas Afonia: " crlf
+			"A. Si" crlf
+		    "B. No" crlf
+		    "Respuesta (Solo la Letra): ")
+
+	(bind ?entrada1 (read))  			
+	(bind ?entrada1 (upcase ?entrada1))      
+
+	(if (eq ?entrada1 A)
+	    then
+                (assert (diagnostico InfeccionDeGarganta)) 
+	)
+
+	(if (eq ?entrada1 B)
+	    then
+                (assert (signo-3B B))
+	)
+
+
+	(retract ?signo1) 
+)
+
+;********************************
+(defrule casoA3B
+
+	
+	?signo1 <- (signo-3B B) 
+=>
+	(printout t crlf 
+		    "Presentas Tos: " crlf
+			"A. Si" crlf
+		    "B. No" crlf
+		    "Respuesta (Solo la Letra): ")
+
+	(bind ?entrada1 (read))  			
+	(bind ?entrada1 (upcase ?entrada1))      
+
+	(if (eq ?entrada1 A)
+	    then
+                (assert (diagnostico InfeccionDeGarganta)) 
+	)
+
+	(if (eq ?entrada1 B)
+	    then
+                (assert (signo-4B B))
+	)
+
+
+	(retract ?signo1) 
+)
+
+;********************************
+(defrule casoA4B
+
+	
+	?signo1 <- (signo-4B B) 
+=>
+	(printout t crlf 
+		    "Presentas Cuerpo Cortado: " crlf
+			"A. Si" crlf
+		    "B. No" crlf
+		    "Respuesta (Solo la Letra): ")
+
+	(bind ?entrada1 (read))  			
+	(bind ?entrada1 (upcase ?entrada1))      
+
+	(if (eq ?entrada1 A)
+	    then
+                (assert (diagnostico InfeccionDeGarganta)) 
+	)
+
+	(if (eq ?entrada1 B)
+	    then
+                (assert (signo-5B B))
+	)
+
+
+	(retract ?signo1) 
+)
+
+;********************************
+(defrule casoA5B
+
+	
+	?signo1 <- (signo-5B B) 
+=>
+	(printout t crlf 
+		    "Presentas Vomito: " crlf
+			"A. Si" crlf
+		    "B. No" crlf
+		    "Respuesta (Solo la Letra): ")
+
+	(bind ?entrada1 (read))  			
+	(bind ?entrada1 (upcase ?entrada1))      
+
+	(if (eq ?entrada1 A)
+	    then
+                (assert (diagnostico Gastritis)) 
+	)
+
+	(if (eq ?entrada1 B)
+	    then
+                (assert (signo-6B B))
+	)
+
+
+	(retract ?signo1) 
+)
+
+;********************************
+(defrule casoA6B
+
+	
+	?signo1 <- (signo-6B B) 
+=>
+	(printout t crlf 
+		    "Presentas Nauseas: " crlf
+			"A. Si" crlf
+		    "B. No" crlf
+		    "Respuesta (Solo la Letra): ")
+
+	(bind ?entrada1 (read))  			
+	(bind ?entrada1 (upcase ?entrada1))      
+
+	(if (eq ?entrada1 A)
+	    then
+                (assert (diagnostico Gastritis)) 
+	)
+
+	(if (eq ?entrada1 B)
+	    then
+                (assert (signo-7B B))
+	)
+
+
+	(retract ?signo1) 
+)
+
+;********************************
+(defrule casoA7B
+
+	
+	?signo1 <- (signo-7B B) 
+=>
+	(printout t crlf 
+		    "Presentas Saciedad: " crlf
+			"A. Si" crlf
+		    "B. No" crlf
+		    "Respuesta (Solo la Letra): ")
+
+	(bind ?entrada1 (read))  			
+	(bind ?entrada1 (upcase ?entrada1))      
+
+	(if (eq ?entrada1 A)
+	    then
+                (assert (diagnostico Gastritis)) 
+	)
+
+	(if (eq ?entrada1 B)
+	    then
+                (assert (signo-8B B))
+	)
+
+
+	(retract ?signo1) 
+)
+
+;********************************
+
+(defrule casoA8B
+
+	
+	?signo1 <- (signo-8B B) 
+=>
+	(printout t crlf 
+		    "Presentas Comezon de Nariz: " crlf
+			"A. Si" crlf
+		    "B. No" crlf
+		    "Respuesta (Solo la Letra): ")
+
+	(bind ?entrada1 (read))  			
+	(bind ?entrada1 (upcase ?entrada1))      
+
+	(if (eq ?entrada1 A)
+	    then
+                (assert (diagnostico Rinitis)) 
+	)
+
+	(if (eq ?entrada1 B)
+	    then
+                (assert (signo-9B B))
+	)
+
+
+	(retract ?signo1) 
+)
+
+;********************************
+
+(defrule casoA9B
+
+	
+	?signo1 <- (signo-9B B) 
+=>
+	(printout t crlf 
+		    "Presentas Oido Tapado: " crlf
+			"A. Si" crlf
+		    "B. No" crlf
+		    "Respuesta (Solo la Letra): ")
+
+	(bind ?entrada1 (read))  			
+	(bind ?entrada1 (upcase ?entrada1))      
+
+	(if (eq ?entrada1 A)
+	    then
+                (assert (diagnostico Rinitis)) 
+	)
+
+	(if (eq ?entrada1 B)
+	    then
+                (assert (signo-10B B))
+	)
+
+
+	(retract ?signo1) 
+)
+
+;********************************
+
+(defrule casoA10B
+
+	
+	?signo1 <- (signo-10B B) 
+=>
+	(printout t crlf 
+		    "Presentas Nariz Tapado: " crlf
+			"A. Si" crlf
+		    "B. No" crlf
+		    "Respuesta (Solo la Letra): ")
+
+	(bind ?entrada1 (read))  			
+	(bind ?entrada1 (upcase ?entrada1))      
+
+	(if (eq ?entrada1 A)
+	    then
+                (assert (diagnostico Rinitis)) 
+	)
+
+	(if (eq ?entrada1 B)
+	    then
+                (assert (signo-11B B))
+	)
+
+
+	(retract ?signo1) 
+)
+
+;********************************
+
+(defrule casoA11B
+
+	
+	?signo1 <- (signo-11B B) 
+=>
+	(printout t crlf 
+		    "Presentas Cansansio: " crlf
+			"A. Si" crlf
+		    "B. No" crlf
+		    "Respuesta (Solo la Letra): ")
+
+	(bind ?entrada1 (read))  			
+	(bind ?entrada1 (upcase ?entrada1))      
+
+	(if (eq ?entrada1 A)
+	    then
+                (assert (diagnostico Rinitis)) 
+	)
+
+	(if (eq ?entrada1 B)
+	    then
+                (assert (diagnostico Desconocido))
+	)
+
+	(retract ?signo1) 
+)
+
+;********************************** Lado A
+(defrule caso1A
+
+	
+	?signo1 <- (signo-1 A) 
+=>
+	(printout t crlf 
+		    "Presentas Ojo Lloroso: " crlf
+			"A. Si" crlf
+		    "B. No" crlf
+		    "Respuesta (Solo la Letra): ")
+
+	(bind ?entrada1 (read))  			
+	(bind ?entrada1 (upcase ?entrada1))      
+
+	(if (eq ?entrada1 A)
+	    then
+                (assert (diagnostico Gripe)) 
+	)
+
+	(if (eq ?entrada1 B)
+	    then
+                (assert (signo-2 B))
+	)
+
+
+	(retract ?signo1) 
+)
+
+;**************************************
+
+
+
+(defrule casoA2A
+
+	
+	?signo1 <- (signo-2 B) 
+=>
+	(printout t crlf 
+		    "Presentas Flujo Nasal: " crlf
+			"A. Si" crlf
+		    "B. No" crlf
+		    "Respuesta (Solo la Letra): ")
+
+	(bind ?entrada1 (read))  			
+	(bind ?entrada1 (upcase ?entrada1))      
+
+	(if (eq ?entrada1 A)
+	    then
+                (assert (diagnostico Gripe)) 
+	)
+
+	(if (eq ?entrada1 B)
+	    then
+                (assert (signo-3 B))
+	)
+
+
+	(retract ?signo1) 
+)
+
+;**************************************
+(defrule casoA3A
+
+	
+	?signo1 <- (signo-3 B) 
+=>
+	(printout t crlf 
+		    "Presentas Perdida del Gusto: " crlf
+			"A. Si" crlf
+		    "B. No" crlf
+		    "Respuesta (Solo la Letra): ")
+
+	(bind ?entrada1 (read))  			
+	(bind ?entrada1 (upcase ?entrada1))      
+
+	(if (eq ?entrada1 A)
+	    then
+                (assert (diagnostico Covid)) 
+	)
+
+	(if (eq ?entrada1 B)
+	    then
+                (assert (signo-4 B))
+	)
+
+
+	(retract ?signo1) 
+)
+
+;**************************************
+(defrule casoA4A
+
+	
+	?signo1 <- (signo-4 B) 
+=>
+	(printout t crlf 
+		    "Presentas Difucultad Respiratoria: " crlf
+			"A. Si" crlf
+		    "B. No" crlf
+		    "Respuesta (Solo la Letra): ")
+
+	(bind ?entrada1 (read))  			
+	(bind ?entrada1 (upcase ?entrada1))      
+
+	(if (eq ?entrada1 A)
+	    then
+                (assert (diagnostico Covid)) 
+	)
+
+	(if (eq ?entrada1 B)
+	    then
+                (assert (signo-5 B))
+	)
+
+
+	(retract ?signo1) 
+)
+;****************************
+(defrule casoA5A
+	?signo1 <- (signo-5 B) 
+=>
+	(printout t crlf 
+		    "Presentas Diarrea: " crlf
+			"A. Si" crlf
+		    "B. No" crlf
+		    "Respuesta (Solo la Letra): ")
+
+	(bind ?entrada1 (read))  			
+	(bind ?entrada1 (upcase ?entrada1))      
+
+	(if (eq ?entrada1 A)
+	    then
+                (assert (diagnostico InfeccionEstomacal)) 
+	)
+
+	(if (eq ?entrada1 B)
+	    then
+                (assert (signo-6 B))
+	)
+	(retract ?signo1) 
+)
+
+
+
+;****************************
+(defrule casoA6A
+	?signo1 <- (signo-6 B) 
+=>
+	(printout t crlf 
+		    "Presentas Dolor Estomacal: " crlf
+			"A. Si" crlf
+		    "B. No" crlf
+		    "Respuesta (Solo la Letra): ")
+
+	(bind ?entrada1 (read))  			
+	(bind ?entrada1 (upcase ?entrada1))      
+
+	(if (eq ?entrada1 A)
+	    then
+                (assert (diagnostico InfeccionEstomacal)) 
+	)
+
+	(if (eq ?entrada1 B)
+	    then
+                (assert (signo-7 B))
+	)
+	(retract ?signo1) 
+)
+
+;****************************
+(defrule casoA7A
+	?signo1 <- (signo-7 B) 
+=>
+	(printout t crlf 
+		    "Presentas Escalofrios: " crlf
+			"A. Si" crlf
+		    "B. No" crlf
+		    "Respuesta (Solo la Letra): ")
+
+	(bind ?entrada1 (read))  			
+	(bind ?entrada1 (upcase ?entrada1))      
+
+	(if (eq ?entrada1 A)
+	    then
+                (assert (diagnostico InfeccionEstomacal)) 
+	)
+
+	(if (eq ?entrada1 B)
+	    then
+                (assert (signo-8 B))
+	)
+	(retract ?signo1) 
+)
+
+;****************************
+(defrule casoA8A
+	?signo1 <- (signo-8 B) 
+=>
+	(printout t crlf 
+		    "Presentas Dolor de Cabeza: " crlf
+			"A. Si" crlf
+		    "B. No" crlf
+		    "Respuesta (Solo la Letra): ")
+
+	(bind ?entrada1 (read))  			
+	(bind ?entrada1 (upcase ?entrada1))      
+
+	(if (eq ?entrada1 A)
+	    then
+                (assert (diagnostico InfeccionEstomacal)) 
+	)
+
+	(if (eq ?entrada1 B)
+	    then
+                (assert (signo-9 B))
+	)
+	(retract ?signo1) 
+)
+
+(defrule casoA9A
+	?signo1 <- (signo-9 B) 
+=>
+	(printout t crlf 
+		    "Presentas Vomito: " crlf
+			"A. Si" crlf
+		    "B. No" crlf
+		    "Respuesta (Solo la Letra): ")
+
+	(bind ?entrada1 (read))  			
+	(bind ?entrada1 (upcase ?entrada1))      
+
+	(if (eq ?entrada1 A)
+	    then
+                (assert (diagnostico Covid)) 
+	)
+
+	(if (eq ?entrada1 B)
+	    then
+                (assert (diagnostico Desconocido)) 
+	)
+	(retract ?signo1) 
+)
+
+
+;Ultimo pedazo de Codigo
+(defrule final-diagnosis
+	"Return the final diagnosis"
+	?diagnosis <- (diagnostico ?enfermedad)
+=>
+	(if (neq ?enfermedad Desconocido)
+	   then
+               (printout t crlf
+			   "------------------------------------------------" 
+			   crlf
+			   " Tu diagnositico es: " 
+			    ?enfermedad
+			    crlf
+			    "------------------------------------------------" 
+			    crlf crlf)
+	  else 
+		(printout t crlf crlf
+			    "-------------------------------------------------------------------------------------" 
+		    	    crlf
+		    	    " Los datos proporcionados no encajan con la base de datos" 
+			    crlf crlf
+			    " Queda descartado: Gripa, Covid, Rinitis, Gastritis, Infeccion Estomacal, Infeccion de Garganta e Infeccion de Garganta."
+			    crlf
+			    "-------------------------------------------------------------------------------------" 
+			    crlf crlf)
+	
+	)
+	
+	
+	(retract ?diagnosis)
+)
+
+(assert (empezar))
+(run)
